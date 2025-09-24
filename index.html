@@ -520,11 +520,27 @@
             border-radius: 12px;
         }
         
+        .connect-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
         .connect-title {
             font-size: 16px;
             font-weight: 600;
             color: #374151;
-            margin-bottom: 15px;
+            margin-top: 10px;
+        }
+        
+        .connect-shop-image {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #e5e7eb;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
     </style>
 </head>
@@ -786,7 +802,12 @@
                     </div>
                     
                     <div class="connect-section">
-                        <div class="connect-title">Connect with us</div>
+                        <div class="connect-header">
+                            <div class="shop-image-container" id="connect-shop-image" style="display: none;">
+                                <img id="connect-shop-img" src="" alt="Shop Image" class="connect-shop-image">
+                            </div>
+                            <div class="connect-title">Connect with us</div>
+                        </div>
                         <div class="social-icons" id="social-icons">
                             <a href="#" class="social-icon" style="background-color: #1877f2;">
                                 <i class="fab fa-facebook-f"></i>
@@ -885,6 +906,22 @@
                     shopPictureContainer.style.display = 'block';
                 } else if (shopPictureContainer) {
                     shopPictureContainer.style.display = 'none';
+                }
+                
+                // Handle shop image in connect section
+                const connectShopImageContainer = document.getElementById('connect-shop-image');
+                const connectShopImage = document.getElementById('connect-shop-img');
+                
+                if (connectShopImageContainer && connectShopImage) {
+                    if (storeInfo.shopPic) {
+                        connectShopImage.src = storeInfo.shopPic;
+                        connectShopImageContainer.style.display = 'block';
+                    } else if (storeInfo.storeImage) {
+                        connectShopImage.src = storeInfo.storeImage;
+                        connectShopImageContainer.style.display = 'block';
+                    } else {
+                        connectShopImageContainer.style.display = 'none';
+                    }
                 }
                 
                 
