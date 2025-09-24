@@ -510,6 +510,22 @@
             font-size: 18px;
             color: white;
         }
+        
+        /* Connect Section Styles (at bottom) */
+        .connect-section {
+            text-align: center;
+            margin: 20px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 12px;
+        }
+        
+        .connect-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 15px;
+        }
     </style>
 </head>
 <body>
@@ -533,13 +549,6 @@
             <img id="store-image" src="" alt="Store Image" class="store-image">
         </div>
         
-        <!-- Social Icons Section -->
-        <div class="social-icons-container" id="social-icons-container" style="display: none;">
-            <div class="social-icons-title" id="social-icons-title">Connect with us</div>
-            <div class="social-icons" id="social-icons">
-                <!-- Social icons will be dynamically added here -->
-            </div>
-        </div>
         
         <div class="bill-content" id="bill-content">
             <div class="loading">
@@ -774,6 +783,25 @@
                         <div class="promo-subtitle">${saleData.promoSubtitle || 'MEGA SALE'}</div>
                         <div class="promo-text">${saleData.promoText || 'Thank you for shopping with us! Visit again for more great deals.'}</div>
                         <div class="promo-offer">${saleData.promoOffer || 'up to 50% OFF'}</div>
+                    </div>
+                    
+                    <div class="connect-section">
+                        <div class="connect-title">Connect with us</div>
+                        <div class="social-icons" id="social-icons">
+                            <a href="#" class="social-icon" style="background-color: #1877f2;">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="social-icon" style="background-color: #e4405f;">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="social-icon" style="background-color: #25d366;">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                            <a href="#" class="social-icon" style="background-color: #1da1f2;">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             `;
         }
@@ -859,49 +887,6 @@
                     shopPictureContainer.style.display = 'none';
                 }
                 
-                // Handle social icons if available
-                const socialIconsContainer = document.getElementById('social-icons-container');
-                const socialIcons = document.getElementById('social-icons');
-                const socialIconsTitle = document.getElementById('social-icons-title');
-                
-                if (socialIconsContainer && socialIcons) {
-                    // Always show social icons section
-                    socialIconsTitle.textContent = 'Connect with us';
-                    
-                    if (storeInfo.socialIcons && storeInfo.socialIcons.length > 0) {
-                        // Use provided social icons
-                        let socialIconsHTML = '';
-                        storeInfo.socialIcons.forEach(icon => {
-                            if (icon.url && icon.name) {
-                                const iconClass = getSocialIconClass(icon.name);
-                                const iconColor = getSocialIconColor(icon.name);
-                                socialIconsHTML += `
-                                    <a href="${icon.url}" target="_blank" class="social-icon" style="background-color: ${icon.color || iconColor};">
-                                        <i class="${iconClass}"></i>
-                                    </a>
-                                `;
-                            }
-                        });
-                        socialIcons.innerHTML = socialIconsHTML;
-                    } else {
-                        // Show default social icons
-                        socialIcons.innerHTML = `
-                            <a href="#" class="social-icon" style="background-color: #1877f2;">
-                                <i class="fab fa-facebook-f"></i>
-                            </a>
-                            <a href="#" class="social-icon" style="background-color: #e4405f;">
-                                <i class="fab fa-instagram"></i>
-                            </a>
-                            <a href="#" class="social-icon" style="background-color: #25d366;">
-                                <i class="fab fa-whatsapp"></i>
-                            </a>
-                            <a href="#" class="social-icon" style="background-color: #1da1f2;">
-                                <i class="fab fa-twitter"></i>
-                            </a>
-                        `;
-                    }
-                    socialIconsContainer.style.display = 'block';
-                }
                 
                 if (storeInfoEl) {
                     let storeInfoHTML = `<div>📍 ${storeInfo.location || 'Your Location'}</div>`;
