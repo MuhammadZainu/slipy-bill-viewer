@@ -63,7 +63,7 @@
         }
         
         .store-logo::after {
-            content: "🏪";
+            content: "🍎🥑🍓🍊";
             font-size: 24px;
             color: white;
         }
@@ -865,10 +865,11 @@
                 const socialIconsTitle = document.getElementById('social-icons-title');
                 
                 if (socialIconsContainer && socialIcons) {
+                    // Always show social icons section
+                    socialIconsTitle.textContent = 'Connect with us';
+                    
                     if (storeInfo.socialIcons && storeInfo.socialIcons.length > 0) {
                         // Use provided social icons
-                        socialIconsTitle.textContent = storeInfo.socialIconsTitle || 'Connect with us';
-                        
                         let socialIconsHTML = '';
                         storeInfo.socialIcons.forEach(icon => {
                             if (icon.url && icon.name) {
@@ -881,12 +882,9 @@
                                 `;
                             }
                         });
-                        
                         socialIcons.innerHTML = socialIconsHTML;
-                        socialIconsContainer.style.display = 'block';
                     } else {
-                        // Show default social icons for testing
-                        socialIconsTitle.textContent = 'Connect with us';
+                        // Show default social icons
                         socialIcons.innerHTML = `
                             <a href="#" class="social-icon" style="background-color: #1877f2;">
                                 <i class="fab fa-facebook-f"></i>
@@ -901,8 +899,8 @@
                                 <i class="fab fa-twitter"></i>
                             </a>
                         `;
-                        socialIconsContainer.style.display = 'block';
                     }
+                    socialIconsContainer.style.display = 'block';
                 }
                 
                 if (storeInfoEl) {
