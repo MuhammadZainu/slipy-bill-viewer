@@ -433,7 +433,7 @@
 <body>
     <div class="container">
         <div class="header" id="store-header">
-            <div class="store-logo"></div>
+            <div class="store-logo" id="store-logo" style="display: none;"></div>
             <div class="store-name" id="store-name">Loading...</div>
             <div class="store-tagline" id="store-tagline">Loading...</div>
             <div class="store-info" id="store-info">
@@ -445,8 +445,8 @@
             <div class="loading">
                 <p>Loading bill details...</p>
             </div>
-        </div>
-        
+            </div>
+            
         <div class="connect-section">
             <div class="connect-logo">🍎🥑🍓🍊</div>
             <div class="connect-title">Connect with us</div>
@@ -588,7 +588,7 @@
                     showError('Invalid bill data: No items found.');
                     return;
                 }
-
+                
                 // Update store information dynamically
                 updateStoreInfo(saleData.storeInfo || {});
 
@@ -674,30 +674,53 @@
                         <div class="promo-subtitle">${saleData.promoSubtitle || 'MEGA SALE'}</div>
                         <div class="promo-text">${saleData.promoText || 'Thank you for shopping with us! Visit again for more great deals.'}</div>
                         <div class="promo-offer">${saleData.promoOffer || 'up to 50% OFF'}</div>
-                    </div>
-                `;
-            }
+                </div>
+            `;
+        }
 
             function updateStoreInfo(storeInfo) {
                 const storeNameEl = document.getElementById('store-name');
                 const storeTaglineEl = document.getElementById('store-tagline');
                 const storeInfoEl = document.getElementById('store-info');
+                const storeLogoEl = document.getElementById('store-logo');
 
                 if (storeNameEl) {
-                    storeNameEl.textContent = storeInfo.storeName || 'FRUITS VALLEY';
+                    storeNameEl.textContent = storeInfo.storeName || 'Your Store';
                 }
                 
                 if (storeTaglineEl) {
-                    storeTaglineEl.textContent = storeInfo.tagline || 'FRUITS FARMING...';
+                    storeTaglineEl.textContent = storeInfo.tagline || 'Quality Products';
+                }
+                
+                // Handle store logo if available
+                if (storeLogoEl && storeInfo.storeImage) {
+                    storeLogoEl.innerHTML = `<img src="${storeInfo.storeImage}" alt="Store Logo" style="max-width: 80px; max-height: 80px; border-radius: 8px;">`;
+                    storeLogoEl.style.display = 'block';
+                } else if (storeLogoEl) {
+                    storeLogoEl.style.display = 'none';
                 }
                 
                 if (storeInfoEl) {
-                    storeInfoEl.innerHTML = `
-                        <div>${storeInfo.location || 'Faizabad'}</div>
-                        <div>Ph#: ${storeInfo.phone || '0516033777'}</div>
-                        <div>STRN/NTN: ${storeInfo.taxNumber || '1234588790'}</div>
-                        <div>Tax Formation GST ${storeInfo.taxLocation || 'Rawalpindi'}</div>
-                    `;
+                    let storeInfoHTML = `<div>📍 ${storeInfo.location || 'Your Location'}</div>`;
+                    storeInfoHTML += `<div>📞 ${storeInfo.phone || 'Your Phone'}</div>`;
+                    
+                    if (storeInfo.taxNumber && storeInfo.taxNumber !== 'Your Tax Number') {
+                        storeInfoHTML += `<div>🏢 Tax #: ${storeInfo.taxNumber}</div>`;
+                    }
+                    
+                    if (storeInfo.taxLocation && storeInfo.taxLocation !== 'Your City') {
+                        storeInfoHTML += `<div>📍 ${storeInfo.taxLocation}</div>`;
+                    }
+                    
+                    if (storeInfo.email && storeInfo.email !== 'Your Email') {
+                        storeInfoHTML += `<div>📧 ${storeInfo.email}</div>`;
+                    }
+                    
+                    if (storeInfo.website && storeInfo.website !== 'Your Website') {
+                        storeInfoHTML += `<div>🌐 ${storeInfo.website}</div>`;
+                    }
+                    
+                    storeInfoEl.innerHTML = storeInfoHTML;
                 }
             }
         });
