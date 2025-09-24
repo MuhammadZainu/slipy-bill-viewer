@@ -63,7 +63,7 @@
         }
         
         .store-logo::after {
-            content: "🍎🥑🍓🍊";
+            content: "🏪";
             font-size: 24px;
             color: white;
         }
@@ -864,26 +864,45 @@
                 const socialIcons = document.getElementById('social-icons');
                 const socialIconsTitle = document.getElementById('social-icons-title');
                 
-                if (socialIconsContainer && socialIcons && storeInfo.socialIcons && storeInfo.socialIcons.length > 0) {
-                    socialIconsTitle.textContent = storeInfo.socialIconsTitle || 'Connect with us';
-                    
-                    let socialIconsHTML = '';
-                    storeInfo.socialIcons.forEach(icon => {
-                        if (icon.url && icon.name) {
-                            const iconClass = getSocialIconClass(icon.name);
-                            const iconColor = getSocialIconColor(icon.name);
-                            socialIconsHTML += `
-                                <a href="${icon.url}" target="_blank" class="social-icon" style="background-color: ${icon.color || iconColor};">
-                                    <i class="${iconClass}"></i>
-                                </a>
-                            `;
-                        }
-                    });
-                    
-                    socialIcons.innerHTML = socialIconsHTML;
-                    socialIconsContainer.style.display = 'block';
-                } else if (socialIconsContainer) {
-                    socialIconsContainer.style.display = 'none';
+                if (socialIconsContainer && socialIcons) {
+                    if (storeInfo.socialIcons && storeInfo.socialIcons.length > 0) {
+                        // Use provided social icons
+                        socialIconsTitle.textContent = storeInfo.socialIconsTitle || 'Connect with us';
+                        
+                        let socialIconsHTML = '';
+                        storeInfo.socialIcons.forEach(icon => {
+                            if (icon.url && icon.name) {
+                                const iconClass = getSocialIconClass(icon.name);
+                                const iconColor = getSocialIconColor(icon.name);
+                                socialIconsHTML += `
+                                    <a href="${icon.url}" target="_blank" class="social-icon" style="background-color: ${icon.color || iconColor};">
+                                        <i class="${iconClass}"></i>
+                                    </a>
+                                `;
+                            }
+                        });
+                        
+                        socialIcons.innerHTML = socialIconsHTML;
+                        socialIconsContainer.style.display = 'block';
+                    } else {
+                        // Show default social icons for testing
+                        socialIconsTitle.textContent = 'Connect with us';
+                        socialIcons.innerHTML = `
+                            <a href="#" class="social-icon" style="background-color: #1877f2;">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="social-icon" style="background-color: #e4405f;">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="social-icon" style="background-color: #25d366;">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                            <a href="#" class="social-icon" style="background-color: #1da1f2;">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        `;
+                        socialIconsContainer.style.display = 'block';
+                    }
                 }
                 
                 if (storeInfoEl) {
