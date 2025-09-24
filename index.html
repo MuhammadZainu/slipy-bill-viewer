@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Slipy Bill Viewer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -429,6 +430,23 @@
             background: #c82333;
         }
         
+        /* Store Image Styles (at top) */
+        .store-image-container {
+            text-align: center;
+            margin: 20px 0;
+            padding: 0 20px;
+        }
+        
+        .store-image {
+            max-width: 100%;
+            max-height: 200px;
+            width: 100%;
+            height: 200px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            object-fit: cover;
+        }
+        
         /* Shop Picture Styles */
         .shop-picture-container {
             text-align: center;
@@ -508,6 +526,11 @@
         <!-- Shop Picture Section -->
         <div class="shop-picture-container" id="shop-picture-container" style="display: none;">
             <img id="shop-picture" src="" alt="Shop Picture" class="shop-picture">
+        </div>
+        
+        <!-- Store Image Section (at top) -->
+        <div class="store-image-container" id="store-image-container" style="display: none;">
+            <img id="store-image" src="" alt="Store Image" class="store-image">
         </div>
         
         <!-- Social Icons Section -->
@@ -774,6 +797,25 @@
                 return iconMap[iconName.toLowerCase()] || 'fas fa-link';
             }
 
+            function getSocialIconColor(iconName) {
+                const colorMap = {
+                    'facebook': '#1877f2',
+                    'instagram': '#e4405f',
+                    'twitter': '#1da1f2',
+                    'linkedin': '#0077b5',
+                    'youtube': '#ff0000',
+                    'whatsapp': '#25d366',
+                    'telegram': '#0088cc',
+                    'tiktok': '#000000',
+                    'snapchat': '#fffc00',
+                    'website': '#2563eb',
+                    'email': '#6b7280',
+                    'phone': '#10b981',
+                    'location': '#f59e0b'
+                };
+                return colorMap[iconName.toLowerCase()] || '#2563eb';
+            }
+
             function updateStoreInfo(storeInfo) {
                 const storeNameEl = document.getElementById('store-name');
                 const storeTaglineEl = document.getElementById('store-tagline');
@@ -798,6 +840,17 @@
                     storeLogoEl.style.display = 'none';
                 }
                 
+                // Handle store image at top if available
+                const storeImageContainer = document.getElementById('store-image-container');
+                const storeImage = document.getElementById('store-image');
+                
+                if (storeImageContainer && storeImage && storeInfo.storeImage) {
+                    storeImage.src = storeInfo.storeImage;
+                    storeImageContainer.style.display = 'block';
+                } else if (storeImageContainer) {
+                    storeImageContainer.style.display = 'none';
+                }
+                
                 // Handle shop picture if available
                 if (shopPictureContainer && shopPicture && storeInfo.shopPic) {
                     shopPicture.src = storeInfo.shopPic;
@@ -818,8 +871,9 @@
                     storeInfo.socialIcons.forEach(icon => {
                         if (icon.url && icon.name) {
                             const iconClass = getSocialIconClass(icon.name);
+                            const iconColor = getSocialIconColor(icon.name);
                             socialIconsHTML += `
-                                <a href="${icon.url}" target="_blank" class="social-icon" style="background-color: ${icon.color || '#2563eb'};">
+                                <a href="${icon.url}" target="_blank" class="social-icon" style="background-color: ${icon.color || iconColor};">
                                     <i class="${iconClass}"></i>
                                 </a>
                             `;
