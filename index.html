@@ -428,6 +428,21 @@
         .retry-btn:hover {
             background: #c82333;
         }
+        
+        /* Shop Picture Styles */
+        .shop-picture-container {
+            text-align: center;
+            margin: 20px 0;
+            padding: 0 20px;
+        }
+        
+        .shop-picture {
+            max-width: 100%;
+            max-height: 300px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            object-fit: cover;
+        }
     </style>
 </head>
 <body>
@@ -439,6 +454,11 @@
             <div class="store-info" id="store-info">
                 <div>Loading...</div>
             </div>
+        </div>
+        
+        <!-- Shop Picture Section -->
+        <div class="shop-picture-container" id="shop-picture-container" style="display: none;">
+            <img id="shop-picture" src="" alt="Shop Picture" class="shop-picture">
         </div>
         
         <div class="bill-content" id="bill-content">
@@ -683,6 +703,8 @@
                 const storeTaglineEl = document.getElementById('store-tagline');
                 const storeInfoEl = document.getElementById('store-info');
                 const storeLogoEl = document.getElementById('store-logo');
+                const shopPictureContainer = document.getElementById('shop-picture-container');
+                const shopPicture = document.getElementById('shop-picture');
 
                 if (storeNameEl) {
                     storeNameEl.textContent = storeInfo.storeName || 'Your Store';
@@ -698,6 +720,14 @@
                     storeLogoEl.style.display = 'block';
                 } else if (storeLogoEl) {
                     storeLogoEl.style.display = 'none';
+                }
+                
+                // Handle shop picture if available
+                if (shopPictureContainer && shopPicture && storeInfo.shopPic) {
+                    shopPicture.src = storeInfo.shopPic;
+                    shopPictureContainer.style.display = 'block';
+                } else if (shopPictureContainer) {
+                    shopPictureContainer.style.display = 'none';
                 }
                 
                 if (storeInfoEl) {
