@@ -13,157 +13,182 @@
         
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #f5f5f5;
             min-height: 100vh;
-            padding: 20px;
+            padding: 10px;
         }
         
         .container {
             max-width: 400px;
             margin: 0 auto;
             background: white;
-            border-radius: 16px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
             overflow: hidden;
         }
         
         .header {
-            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
-            color: white;
-            padding: 24px;
+            background: white;
+            padding: 20px;
             text-align: center;
+            border-bottom: 1px solid #e5e5e5;
         }
         
-        .header h1 {
-            font-size: 24px;
-            font-weight: bold;
-            margin-bottom: 4px;
-        }
-        
-        .header p {
-            font-size: 14px;
-            opacity: 0.9;
-        }
-        
-        .bill-content {
-            padding: 24px;
-        }
-        
-        .qr-info {
-            background: #e0f2fe;
-            border: 1px solid #b3e5fc;
-            border-radius: 12px;
-            padding: 16px;
-            margin-bottom: 24px;
-        }
-        
-        .qr-info h3 {
-            color: #0277bd;
-            font-size: 16px;
-            margin-bottom: 8px;
+        .store-logo {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+            border-radius: 50%;
+            margin: 0 auto 15px;
             display: flex;
             align-items: center;
-            gap: 8px;
+            justify-content: center;
+            position: relative;
+            border: 3px solid #22c55e;
         }
         
-        .qr-info p {
-            color: #01579b;
+        .store-logo::before {
+            content: "ESTD 2024";
+            position: absolute;
+            top: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #22c55e;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 10px;
+            font-weight: bold;
+        }
+        
+        .store-logo::after {
+            content: "🍎🥑🍓🍊";
+            font-size: 24px;
+            color: white;
+        }
+        
+        .store-name {
+            font-size: 18px;
+            font-weight: bold;
+            color: #22c55e;
+            margin-bottom: 5px;
+        }
+        
+        .store-tagline {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        .store-info {
             font-size: 14px;
+            color: #333;
             line-height: 1.4;
         }
         
-        .bill-info {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-            margin-bottom: 24px;
+        .bill-content {
+            padding: 20px;
         }
         
-        .info-item {
-            text-align: center;
-            padding: 12px;
+        .invoice-details {
             background: #f8f9fa;
+            padding: 15px;
             border-radius: 8px;
+            margin-bottom: 20px;
         }
         
-        .info-label {
-            font-size: 12px;
-            color: #6c757d;
-            margin-bottom: 4px;
+        .invoice-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        
+        .invoice-label {
+            color: #666;
             font-weight: 500;
         }
         
-        .info-value {
-            font-size: 16px;
+        .invoice-value {
+            color: #333;
             font-weight: bold;
-            color: #212529;
+        }
+        
+        .payment-info {
+            background: #e8f5e8;
+            padding: 12px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            border-left: 4px solid #22c55e;
+        }
+        
+        .payment-mode {
+            font-size: 14px;
+            color: #333;
+            margin-bottom: 8px;
+        }
+        
+        .buyer-info {
+            font-size: 12px;
+            color: #666;
         }
         
         .items-section {
-            margin-bottom: 24px;
+            margin-bottom: 20px;
         }
         
-        .section-title {
-            font-size: 18px;
-            font-weight: bold;
-            color: #212529;
-            margin-bottom: 16px;
-            padding-bottom: 8px;
-            border-bottom: 2px solid #e9ecef;
+        .items-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 15px;
         }
         
-        .item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px 0;
-            border-bottom: 1px solid #e9ecef;
-        }
-        
-        .item:last-child {
-            border-bottom: none;
-        }
-        
-        .item-info {
-            flex: 1;
-        }
-        
-        .item-name {
-            font-weight: bold;
-            color: #212529;
-            margin-bottom: 4px;
-        }
-        
-        .item-company {
+        .items-table th {
+            background: #22c55e;
+            color: white;
+            padding: 10px 8px;
+            text-align: center;
             font-size: 12px;
-            color: #6c757d;
+            font-weight: bold;
         }
         
-        .item-details {
-            text-align: right;
+        .items-table td {
+            padding: 10px 8px;
+            text-align: center;
+            border-bottom: 1px solid #e5e5e5;
+            font-size: 13px;
         }
         
-        .item-qty {
-            font-size: 12px;
-            color: #6c757d;
-            margin-bottom: 2px;
+        .item-description {
+            text-align: left;
+            font-weight: 500;
+            color: #333;
         }
         
         .item-price {
-            font-size: 12px;
-            color: #6c757d;
-            margin-bottom: 4px;
+            color: #333;
+            font-weight: 500;
+        }
+        
+        .item-qty {
+            color: #333;
+            font-weight: 500;
+        }
+        
+        .item-gst {
+            color: #666;
         }
         
         .item-total {
+            color: #333;
             font-weight: bold;
-            color: #212529;
         }
         
         .totals-section {
             background: #f8f9fa;
-            border-radius: 12px;
-            padding: 20px;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
         }
         
         .total-row {
@@ -171,25 +196,130 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 8px;
+            font-size: 14px;
         }
         
         .total-row.final {
-            border-top: 2px solid #dee2e6;
+            border-top: 2px solid #22c55e;
             padding-top: 12px;
             margin-top: 12px;
-            font-size: 18px;
+            font-size: 16px;
             font-weight: bold;
-            color: #212529;
+            color: #333;
         }
         
         .total-label {
-            color: #6c757d;
+            color: #666;
+            font-weight: 500;
         }
         
         .total-value {
             font-weight: bold;
-            color: #212529;
+            color: #333;
         }
+        
+        .promo-banner {
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .promo-banner::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            right: -20px;
+            width: 100px;
+            height: 100px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+        }
+        
+        .promo-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        
+        .promo-subtitle {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #ffeb3b;
+        }
+        
+        .promo-text {
+            font-size: 12px;
+            opacity: 0.9;
+            margin-bottom: 10px;
+        }
+        
+        .promo-offer {
+            background: #ff4081;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            display: inline-block;
+        }
+        
+        .connect-section {
+            background: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .connect-logo {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+        
+        .connect-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+            text-decoration: none;
+        }
+        
+        .whatsapp { background: #25d366; }
+        .facebook { background: #1877f2; }
+        .instagram { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
+        .linkedin { background: #0077b5; }
         
         .footer {
             background: #f8f9fa;
@@ -202,6 +332,23 @@
             color: #6c757d;
             font-size: 14px;
             margin-bottom: 4px;
+        }
+        
+        .powered-by {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 10px;
+        }
+        
+        .slip-logo {
+            background: #22c55e;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 12px;
         }
         
         .loading {
@@ -241,9 +388,13 @@
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <h1>🧾 Slipy Bill</h1>
-            <p>Digital Receipt</p>
+        <div class="header" id="store-header">
+            <div class="store-logo"></div>
+            <div class="store-name" id="store-name">Loading...</div>
+            <div class="store-tagline" id="store-tagline">Loading...</div>
+            <div class="store-info" id="store-info">
+                <div>Loading...</div>
+            </div>
         </div>
         
         <div class="bill-content" id="bill-content">
@@ -252,9 +403,22 @@
             </div>
         </div>
         
+        <div class="connect-section">
+            <div class="connect-logo">🍎🥑🍓🍊</div>
+            <div class="connect-title">Connect with us</div>
+            <div class="social-icons">
+                <a href="#" class="social-icon whatsapp">📱</a>
+                <a href="#" class="social-icon facebook">📘</a>
+                <a href="#" class="social-icon instagram">📷</a>
+                <a href="#" class="social-icon linkedin">💼</a>
+            </div>
+        </div>
+        
         <div class="footer">
-            <p>Thank you for your business! 🎉</p>
-            <p>Generated by Slipy POS System</p>
+            <div class="powered-by">
+                <span>Powered by</span>
+                <span class="slip-logo">SLIPY</span>
+            </div>
         </div>
     </div>
 
@@ -294,69 +458,46 @@
             }
 
             function renderTestBill(billId) {
-                billContentDiv.innerHTML = `
-                    <div class="qr-info">
-                        <h3>📱 QR Code Bill</h3>
-                        <p>This is a test bill accessed via QR code scan. All information is displayed below for your reference.</p>
-                    </div>
-                    
-                    <div class="bill-info">
-                        <div class="info-item">
-                            <div class="info-label">Bill ID</div>
-                            <div class="info-value">${billId}</div>
-                        </div>
-                        <div class="info-item">
-                            <div class="info-label">Date</div>
-                            <div class="info-value">${new Date().toLocaleDateString()}</div>
-                        </div>
-                        <div class="info-item">
-                            <div class="info-label">Items</div>
-                            <div class="info-value">2</div>
-                        </div>
-                        <div class="info-item">
-                            <div class="info-label">Total</div>
-                            <div class="info-value">₨ 250.00</div>
-                        </div>
-                    </div>
-                    
-                    <div class="items-section">
-                        <h2 class="section-title">Items</h2>
-                        <div class="item">
-                            <div class="item-info">
-                                <div class="item-name">Test Product 1</div>
-                                <div class="item-company">Test Company</div>
-                            </div>
-                            <div class="item-details">
-                                <div class="item-qty">Qty: 1</div>
-                                <div class="item-price">₨ 100.00 each</div>
-                                <div class="item-total">₨ 100.00</div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="item-info">
-                                <div class="item-name">Test Product 2</div>
-                                <div class="item-company">Test Company</div>
-                            </div>
-                            <div class="item-details">
-                                <div class="item-qty">Qty: 1</div>
-                                <div class="item-price">₨ 150.00 each</div>
-                                <div class="item-total">₨ 150.00</div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="totals-section">
-                        <h2 class="section-title">Bill Summary</h2>
-                        <div class="total-row">
-                            <span class="total-label">Subtotal:</span>
-                            <span class="total-value">₨ 250.00</span>
-                        </div>
-                        <div class="total-row final">
-                            <span class="total-label">Total:</span>
-                            <span class="total-value">₨ 250.00</span>
-                        </div>
-                    </div>
-                `;
+                // Create test data that matches your app structure
+                const testData = {
+                    billId: billId,
+                    posNumber: '987205',
+                    paymentMode: 'Cash',
+                    subtotal: 250.00,
+                    salesTax: 0,
+                    discount: 0,
+                    posFee: 1.00,
+                    total: 251.00,
+                    saleDate: new Date().toISOString(),
+                    storeInfo: {
+                        storeName: 'FRUITS VALLEY',
+                        tagline: 'FRUITS FARMING...',
+                        location: 'Faizabad',
+                        phone: '0516033777',
+                        taxNumber: '1234588790',
+                        taxLocation: 'Rawalpindi'
+                    },
+                    items: [
+                        {
+                            productName: 'Test Product 1',
+                            salePrice: 100.00,
+                            saleQuantity: 1,
+                            gst: 0.00
+                        },
+                        {
+                            productName: 'Test Product 2',
+                            salePrice: 150.00,
+                            saleQuantity: 1,
+                            gst: 0.00
+                        }
+                    ],
+                    promoTitle: 'Supermarket',
+                    promoSubtitle: 'MEGA SALE',
+                    promoText: 'Thank you for shopping with us! Visit again for more great deals.',
+                    promoOffer: 'up to 50% OFF'
+                };
+                
+                renderBill(testData);
             }
 
             function renderBill(saleData) {
@@ -367,62 +508,116 @@
                     return;
                 }
 
-                const itemsHTML = saleData.items.map(item => `
-                    <div class="item">
-                        <div class="item-info">
-                            <div class="item-name">${item.productName || 'Unknown Product'}</div>
-                            <div class="item-company">${item.companyName || 'Unknown Company'}</div>
-                        </div>
-                        <div class="item-details">
-                            <div class="item-qty">Qty: ${item.saleQuantity || 0}</div>
-                            <div class="item-price">₨ ${(item.salePrice || 0).toFixed(2)} each</div>
-                            <div class="item-total">₨ ${((item.salePrice || 0) * (item.saleQuantity || 0)).toFixed(2)}</div>
-                        </div>
-                    </div>
+                // Update store information dynamically
+                updateStoreInfo(saleData.storeInfo || {});
+
+                const itemsHTML = saleData.items.map((item, index) => `
+                    <tr>
+                        <td>${index + 1}</td>
+                        <td class="item-description">${item.productName || 'Unknown Product'}</td>
+                        <td class="item-price">${(item.salePrice || 0).toFixed(2)}</td>
+                        <td class="item-qty">${item.saleQuantity || 0}</td>
+                        <td class="item-gst">${(item.gst || 0).toFixed(2)}</td>
+                        <td class="item-total">${((item.salePrice || 0) * (item.saleQuantity || 0)).toFixed(2)}</td>
+                    </tr>
                 `).join('');
 
+                const currentDate = new Date(saleData.saleDate || Date.now());
+                const formattedDate = currentDate.toLocaleDateString('en-GB');
+                const formattedTime = currentDate.toLocaleTimeString('en-US', { hour12: true });
+
                 billContentDiv.innerHTML = `
-                    <div class="qr-info">
-                        <h3>📱 QR Code Bill</h3>
-                        <p>This bill was accessed via QR code scan. All information is displayed below for your reference.</p>
+                    <div class="invoice-details">
+                        <div class="invoice-row">
+                            <span class="invoice-label">POS No:</span>
+                            <span class="invoice-value">${saleData.posNumber || '987205'}</span>
+                        </div>
+                        <div class="invoice-row">
+                            <span class="invoice-label">Invoice #:</span>
+                            <span class="invoice-value">${saleData.billId || 'INV-' + Date.now()}</span>
+                        </div>
+                        <div class="invoice-row">
+                            <span class="invoice-label">Date:</span>
+                            <span class="invoice-value">${formattedDate} ${formattedTime}</span>
+                        </div>
                     </div>
                     
-                    <div class="bill-info">
-                        <div class="info-item">
-                            <div class="info-label">Bill ID</div>
-                            <div class="info-value">${saleData.billId || 'N/A'}</div>
-                        </div>
-                        <div class="info-item">
-                            <div class="info-label">Date</div>
-                            <div class="info-value">${new Date(saleData.saleDate || Date.now()).toLocaleDateString()}</div>
-                        </div>
-                        <div class="info-item">
-                            <div class="info-label">Items</div>
-                            <div class="info-value">${saleData.items.length}</div>
-                        </div>
-                        <div class="info-item">
-                            <div class="info-label">Total</div>
-                            <div class="info-value">₨ ${(saleData.total || 0).toFixed(2)}</div>
-                        </div>
+                    <div class="payment-info">
+                        <div class="payment-mode">Mode of Payment: ${saleData.paymentMode || 'Cash'}</div>
+                        <div class="buyer-info">Name /CNIC/ NTN of the buyer (Optional for B2B)</div>
                     </div>
                     
                     <div class="items-section">
-                        <h2 class="section-title">Items</h2>
-                        ${itemsHTML}
+                        <table class="items-table">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Description</th>
+                                    <th>PKR</th>
+                                    <th>Qty</th>
+                                    <th>GST</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${itemsHTML}
+                            </tbody>
+                        </table>
                     </div>
                     
                     <div class="totals-section">
-                        <h2 class="section-title">Bill Summary</h2>
                         <div class="total-row">
-                            <span class="total-label">Subtotal:</span>
-                            <span class="total-value">₨ ${(saleData.subtotal || 0).toFixed(2)}</span>
+                            <span class="total-label">Total Amount:</span>
+                            <span class="total-value">Rs ${(saleData.subtotal || 0).toFixed(2)}</span>
+                        </div>
+                        <div class="total-row">
+                            <span class="total-label">Sales Tax:</span>
+                            <span class="total-value">${saleData.salesTax ? 'Rs ' + saleData.salesTax.toFixed(2) : '-'}</span>
+                        </div>
+                        <div class="total-row">
+                            <span class="total-label">Discount:</span>
+                            <span class="total-value">${saleData.discount ? 'Rs ' + saleData.discount.toFixed(2) : '-'}</span>
+                        </div>
+                        <div class="total-row">
+                            <span class="total-label">POS Fee:</span>
+                            <span class="total-value">Rs ${(saleData.posFee || 1.00).toFixed(2)}</span>
                         </div>
                         <div class="total-row final">
-                            <span class="total-label">Total:</span>
-                            <span class="total-value">₨ ${(saleData.total || 0).toFixed(2)}</span>
+                            <span class="total-label">Payable:</span>
+                            <span class="total-value">${(saleData.total || 0).toLocaleString()}</span>
                         </div>
                     </div>
+                    
+                    <div class="promo-banner">
+                        <div class="promo-title">${saleData.promoTitle || 'Supermarket'}</div>
+                        <div class="promo-subtitle">${saleData.promoSubtitle || 'MEGA SALE'}</div>
+                        <div class="promo-text">${saleData.promoText || 'Thank you for shopping with us! Visit again for more great deals.'}</div>
+                        <div class="promo-offer">${saleData.promoOffer || 'up to 50% OFF'}</div>
+                    </div>
                 `;
+            }
+
+            function updateStoreInfo(storeInfo) {
+                const storeNameEl = document.getElementById('store-name');
+                const storeTaglineEl = document.getElementById('store-tagline');
+                const storeInfoEl = document.getElementById('store-info');
+
+                if (storeNameEl) {
+                    storeNameEl.textContent = storeInfo.storeName || 'FRUITS VALLEY';
+                }
+                
+                if (storeTaglineEl) {
+                    storeTaglineEl.textContent = storeInfo.tagline || 'FRUITS FARMING...';
+                }
+                
+                if (storeInfoEl) {
+                    storeInfoEl.innerHTML = `
+                        <div>${storeInfo.location || 'Faizabad'}</div>
+                        <div>Ph#: ${storeInfo.phone || '0516033777'}</div>
+                        <div>STRN/NTN: ${storeInfo.taxNumber || '1234588790'}</div>
+                        <div>Tax Formation GST ${storeInfo.taxLocation || 'Rawalpindi'}</div>
+                    `;
+                }
             }
         });
     </script>
