@@ -12,17 +12,17 @@
         }
         
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             padding: 20px;
         }
         
         .container {
-            max-width: 600px;
+            max-width: 400px;
             margin: 0 auto;
             background: white;
-            border-radius: 15px;
+            border-radius: 16px;
             box-shadow: 0 20px 40px rgba(0,0,0,0.1);
             overflow: hidden;
         }
@@ -30,62 +30,85 @@
         .header {
             background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
             color: white;
-            padding: 30px;
+            padding: 24px;
             text-align: center;
         }
         
         .header h1 {
-            font-size: 28px;
-            margin-bottom: 10px;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 4px;
         }
         
         .header p {
+            font-size: 14px;
             opacity: 0.9;
-            font-size: 16px;
         }
         
         .bill-content {
-            padding: 30px;
+            padding: 24px;
+        }
+        
+        .qr-info {
+            background: #e0f2fe;
+            border: 1px solid #b3e5fc;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .qr-info h3 {
+            color: #0277bd;
+            font-size: 16px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .qr-info p {
+            color: #01579b;
+            font-size: 14px;
+            line-height: 1.4;
         }
         
         .bill-info {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin-bottom: 30px;
-            padding: 20px;
-            background: #f8f9fa;
-            border-radius: 10px;
+            gap: 16px;
+            margin-bottom: 24px;
         }
         
         .info-item {
             text-align: center;
+            padding: 12px;
+            background: #f8f9fa;
+            border-radius: 8px;
         }
         
         .info-label {
             font-size: 12px;
-            color: #666;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 5px;
+            color: #6c757d;
+            margin-bottom: 4px;
+            font-weight: 500;
         }
         
         .info-value {
-            font-size: 18px;
+            font-size: 16px;
             font-weight: bold;
-            color: #333;
+            color: #212529;
         }
         
         .items-section {
-            margin-bottom: 30px;
+            margin-bottom: 24px;
         }
         
         .section-title {
-            font-size: 20px;
+            font-size: 18px;
             font-weight: bold;
-            color: #333;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
+            color: #212529;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
             border-bottom: 2px solid #e9ecef;
         }
         
@@ -93,11 +116,12 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px;
-            margin-bottom: 10px;
-            background: #f8f9fa;
-            border-radius: 8px;
-            border-left: 4px solid #2563eb;
+            padding: 12px 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .item:last-child {
+            border-bottom: none;
         }
         
         .item-info {
@@ -105,15 +129,14 @@
         }
         
         .item-name {
-            font-size: 16px;
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 5px;
+            font-weight: bold;
+            color: #212529;
+            margin-bottom: 4px;
         }
         
         .item-company {
-            font-size: 14px;
-            color: #666;
+            font-size: 12px;
+            color: #6c757d;
         }
         
         .item-details {
@@ -122,111 +145,97 @@
         
         .item-qty {
             font-size: 12px;
-            color: #666;
-            margin-bottom: 5px;
+            color: #6c757d;
+            margin-bottom: 2px;
         }
         
         .item-price {
-            font-size: 14px;
-            color: #333;
-            margin-bottom: 5px;
+            font-size: 12px;
+            color: #6c757d;
+            margin-bottom: 4px;
         }
         
         .item-total {
-            font-size: 16px;
             font-weight: bold;
-            color: #059669;
+            color: #212529;
         }
         
         .totals-section {
             background: #f8f9fa;
+            border-radius: 12px;
             padding: 20px;
-            border-radius: 10px;
-            border: 2px solid #e9ecef;
         }
         
         .total-row {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 10px;
-            padding: 5px 0;
+            align-items: center;
+            margin-bottom: 8px;
         }
         
         .total-row.final {
-            border-top: 2px solid #e9ecef;
-            padding-top: 15px;
-            margin-top: 15px;
+            border-top: 2px solid #dee2e6;
+            padding-top: 12px;
+            margin-top: 12px;
             font-size: 18px;
             font-weight: bold;
-            color: #059669;
+            color: #212529;
         }
         
         .total-label {
-            color: #666;
+            color: #6c757d;
         }
         
         .total-value {
-            font-weight: 600;
-            color: #333;
+            font-weight: bold;
+            color: #212529;
         }
         
         .footer {
             background: #f8f9fa;
             padding: 20px;
             text-align: center;
-            color: #666;
+            border-top: 1px solid #e9ecef;
+        }
+        
+        .footer p {
+            color: #6c757d;
             font-size: 14px;
+            margin-bottom: 4px;
         }
         
-        .qr-info {
-            background: #e3f2fd;
-            padding: 15px;
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #6c757d;
+        }
+        
+        .error {
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+            padding: 16px;
             border-radius: 8px;
-            margin-bottom: 20px;
-            border-left: 4px solid #2196f3;
+            margin: 20px;
+            text-align: center;
         }
         
-        .qr-info h3 {
-            color: #1976d2;
-            margin-bottom: 10px;
+        .error h3 {
+            margin-bottom: 8px;
         }
         
-        .qr-info p {
-            color: #424242;
-            line-height: 1.5;
+        .retry-btn {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 12px;
         }
         
-        .error-message {
-            background: #ffebee;
-            padding: 20px;
-            border-radius: 8px;
-            border-left: 4px solid #f44336;
-            margin: 20px 0;
-        }
-        
-        .error-message h3 {
-            color: #d32f2f;
-            margin-bottom: 10px;
-        }
-        
-        .error-message p {
-            color: #424242;
-        }
-        
-        @media (max-width: 600px) {
-            .bill-info {
-                grid-template-columns: 1fr;
-            }
-            
-            .item {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            
-            .item-details {
-                text-align: left;
-                margin-top: 10px;
-            }
+        .retry-btn:hover {
+            background: #c82333;
         }
     </style>
 </head>
@@ -237,17 +246,9 @@
             <p>Digital Receipt</p>
         </div>
         
-        <div class="bill-content">
-            <div class="qr-info">
-                <h3>📱 QR Code Bill</h3>
-                <p>This bill was accessed via QR code scan. All information is displayed below for your reference.</p>
-            </div>
-            
-            <div id="billContent">
-                <div class="error-message">
-                    <h3>Loading Bill...</h3>
-                    <p>Please wait while we load your bill information.</p>
-                </div>
+        <div class="bill-content" id="bill-content">
+            <div class="loading">
+                <p>Loading bill details...</p>
             </div>
         </div>
         
@@ -258,90 +259,172 @@
     </div>
 
     <script>
-        // Function to get URL parameters
-        function getUrlParameter(name) {
-            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
-            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
-            var results = regex.exec(location.search);
-            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
-        }
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const billId = urlParams.get('billId');
+            const encodedData = urlParams.get('data');
+            const billContentDiv = document.getElementById('bill-content');
 
-        // Function to format currency
-        function formatCurrency(amount) {
-            return '₨ ' + parseFloat(amount).toFixed(2);
-        }
+            console.log('URL Parameters:', { billId, encodedData: encodedData ? 'Present' : 'Missing' });
 
-        // Function to format date
-        function formatDate(dateString) {
-            const date = new Date(dateString);
-            return date.toLocaleDateString() + ' ' + date.toLocaleTimeString();
-        }
+            if (billId && encodedData) {
+                try {
+                    const billData = JSON.parse(decodeURIComponent(encodedData));
+                    console.log('Parsed Bill Data:', billData);
+                    renderBill(billData);
+                } catch (e) {
+                    console.error('Error parsing bill data:', e);
+                    showError('Error parsing bill data. Please try scanning the QR code again.');
+                }
+            } else if (billId && urlParams.get('test') === 'true') {
+                // Handle test mode
+                renderTestBill(billId);
+            } else {
+                showError('No bill data found in URL. Please scan a valid QR code.');
+            }
 
-        // Function to load bill data
-        function loadBillData() {
-            try {
-                // Get bill data from URL parameters
-                const billId = getUrlParameter('billId');
-                const dataParam = getUrlParameter('data');
+            function showError(message) {
+                billContentDiv.innerHTML = `
+                    <div class="error">
+                        <h3>Error Loading Bill</h3>
+                        <p>${message}</p>
+                        <button class="retry-btn" onclick="location.reload()">Retry</button>
+                    </div>
+                `;
+            }
+
+            function renderTestBill(billId) {
+                billContentDiv.innerHTML = `
+                    <div class="qr-info">
+                        <h3>📱 QR Code Bill</h3>
+                        <p>This is a test bill accessed via QR code scan. All information is displayed below for your reference.</p>
+                    </div>
+                    
+                    <div class="bill-info">
+                        <div class="info-item">
+                            <div class="info-label">Bill ID</div>
+                            <div class="info-value">${billId}</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Date</div>
+                            <div class="info-value">${new Date().toLocaleDateString()}</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Items</div>
+                            <div class="info-value">2</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Total</div>
+                            <div class="info-value">₨ 250.00</div>
+                        </div>
+                    </div>
+                    
+                    <div class="items-section">
+                        <h2 class="section-title">Items</h2>
+                        <div class="item">
+                            <div class="item-info">
+                                <div class="item-name">Test Product 1</div>
+                                <div class="item-company">Test Company</div>
+                            </div>
+                            <div class="item-details">
+                                <div class="item-qty">Qty: 1</div>
+                                <div class="item-price">₨ 100.00 each</div>
+                                <div class="item-total">₨ 100.00</div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="item-info">
+                                <div class="item-name">Test Product 2</div>
+                                <div class="item-company">Test Company</div>
+                            </div>
+                            <div class="item-details">
+                                <div class="item-qty">Qty: 1</div>
+                                <div class="item-price">₨ 150.00 each</div>
+                                <div class="item-total">₨ 150.00</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="totals-section">
+                        <h2 class="section-title">Bill Summary</h2>
+                        <div class="total-row">
+                            <span class="total-label">Subtotal:</span>
+                            <span class="total-value">₨ 250.00</span>
+                        </div>
+                        <div class="total-row final">
+                            <span class="total-label">Total:</span>
+                            <span class="total-value">₨ 250.00</span>
+                        </div>
+                    </div>
+                `;
+            }
+
+            function renderBill(saleData) {
+                console.log('Rendering bill with data:', saleData);
                 
-                if (!billId || !dataParam) {
-                    showError('Invalid bill URL. Please scan the QR code again.');
+                if (!saleData.items || !Array.isArray(saleData.items)) {
+                    showError('Invalid bill data: No items found.');
                     return;
                 }
-                
-                // Parse the bill data
-                const billData = JSON.parse(dataParam);
-                
-                // Populate bill information
-                document.getElementById('billId').textContent = billData.billId;
-                document.getElementById('billDate').textContent = formatDate(billData.saleDate);
-                document.getElementById('itemCount').textContent = billData.items.length;
-                document.getElementById('totalAmount').textContent = formatCurrency(billData.total);
 
-                // Populate items
-                const itemsList = document.getElementById('itemsList');
-                itemsList.innerHTML = '';
-                
-                billData.items.forEach(item => {
-                    const itemElement = document.createElement('div');
-                    itemElement.className = 'item';
-                    itemElement.innerHTML = `
+                const itemsHTML = saleData.items.map(item => `
+                    <div class="item">
                         <div class="item-info">
-                            <div class="item-name">${item.productName}</div>
-                            <div class="item-company">${item.companyName}</div>
+                            <div class="item-name">${item.productName || 'Unknown Product'}</div>
+                            <div class="item-company">${item.companyName || 'Unknown Company'}</div>
                         </div>
                         <div class="item-details">
-                            <div class="item-qty">Qty: ${item.saleQuantity}</div>
-                            <div class="item-price">${formatCurrency(item.salePrice)} each</div>
-                            <div class="item-total">${formatCurrency(item.salePrice * item.saleQuantity)}</div>
+                            <div class="item-qty">Qty: ${item.saleQuantity || 0}</div>
+                            <div class="item-price">₨ ${(item.salePrice || 0).toFixed(2)} each</div>
+                            <div class="item-total">₨ ${((item.salePrice || 0) * (item.saleQuantity || 0)).toFixed(2)}</div>
                         </div>
-                    `;
-                    itemsList.appendChild(itemElement);
-                });
+                    </div>
+                `).join('');
 
-                // Populate totals
-                document.getElementById('subtotal').textContent = formatCurrency(billData.subtotal);
-                document.getElementById('tax').textContent = formatCurrency(billData.tax);
-                document.getElementById('total').textContent = formatCurrency(billData.total);
-                
-            } catch (error) {
-                console.error('Error loading bill data:', error);
-                showError('Error loading bill data. Please try scanning the QR code again.');
+                billContentDiv.innerHTML = `
+                    <div class="qr-info">
+                        <h3>📱 QR Code Bill</h3>
+                        <p>This bill was accessed via QR code scan. All information is displayed below for your reference.</p>
+                    </div>
+                    
+                    <div class="bill-info">
+                        <div class="info-item">
+                            <div class="info-label">Bill ID</div>
+                            <div class="info-value">${saleData.billId || 'N/A'}</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Date</div>
+                            <div class="info-value">${new Date(saleData.saleDate || Date.now()).toLocaleDateString()}</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Items</div>
+                            <div class="info-value">${saleData.items.length}</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Total</div>
+                            <div class="info-value">₨ ${(saleData.total || 0).toFixed(2)}</div>
+                        </div>
+                    </div>
+                    
+                    <div class="items-section">
+                        <h2 class="section-title">Items</h2>
+                        ${itemsHTML}
+                    </div>
+                    
+                    <div class="totals-section">
+                        <h2 class="section-title">Bill Summary</h2>
+                        <div class="total-row">
+                            <span class="total-label">Subtotal:</span>
+                            <span class="total-value">₨ ${(saleData.subtotal || 0).toFixed(2)}</span>
+                        </div>
+                        <div class="total-row final">
+                            <span class="total-label">Total:</span>
+                            <span class="total-value">₨ ${(saleData.total || 0).toFixed(2)}</span>
+                        </div>
+                    </div>
+                `;
             }
-        }
-
-        // Function to show error message
-        function showError(message) {
-            document.getElementById('billContent').innerHTML = `
-                <div class="error-message">
-                    <h3>Error Loading Bill</h3>
-                    <p>${message}</p>
-                </div>
-            `;
-        }
-
-        // Load bill data when page loads
-        document.addEventListener('DOMContentLoaded', loadBillData);
+        });
     </script>
 </body>
 </html>
