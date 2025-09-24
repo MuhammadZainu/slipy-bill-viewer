@@ -432,16 +432,65 @@
         /* Shop Picture Styles */
         .shop-picture-container {
             text-align: center;
-            margin: 20px 0;
+            margin: 15px 0;
             padding: 0 20px;
         }
         
         .shop-picture {
-            max-width: 100%;
-            max-height: 300px;
+            max-width: 200px;
+            max-height: 150px;
+            width: 200px;
+            height: 150px;
             border-radius: 12px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             object-fit: cover;
+        }
+        
+        /* Social Icons Styles */
+        .social-icons-container {
+            text-align: center;
+            margin: 15px 0;
+            padding: 0 20px;
+        }
+        
+        .social-icons-title {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: transform 0.2s ease;
+        }
+        
+        .social-icon:hover {
+            transform: scale(1.1);
+        }
+        
+        .social-icon img {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+        }
+        
+        .social-icon i {
+            font-size: 18px;
+            color: white;
         }
     </style>
 </head>
@@ -459,6 +508,14 @@
         <!-- Shop Picture Section -->
         <div class="shop-picture-container" id="shop-picture-container" style="display: none;">
             <img id="shop-picture" src="" alt="Shop Picture" class="shop-picture">
+        </div>
+        
+        <!-- Social Icons Section -->
+        <div class="social-icons-container" id="social-icons-container" style="display: none;">
+            <div class="social-icons-title" id="social-icons-title">Connect with us</div>
+            <div class="social-icons" id="social-icons">
+                <!-- Social icons will be dynamically added here -->
+            </div>
         </div>
         
         <div class="bill-content" id="bill-content">
@@ -698,6 +755,25 @@
             `;
         }
 
+            function getSocialIconClass(iconName) {
+                const iconMap = {
+                    'facebook': 'fab fa-facebook-f',
+                    'instagram': 'fab fa-instagram',
+                    'twitter': 'fab fa-twitter',
+                    'linkedin': 'fab fa-linkedin-in',
+                    'youtube': 'fab fa-youtube',
+                    'whatsapp': 'fab fa-whatsapp',
+                    'telegram': 'fab fa-telegram-plane',
+                    'tiktok': 'fab fa-tiktok',
+                    'snapchat': 'fab fa-snapchat-ghost',
+                    'website': 'fas fa-globe',
+                    'email': 'fas fa-envelope',
+                    'phone': 'fas fa-phone',
+                    'location': 'fas fa-map-marker-alt'
+                };
+                return iconMap[iconName.toLowerCase()] || 'fas fa-link';
+            }
+
             function updateStoreInfo(storeInfo) {
                 const storeNameEl = document.getElementById('store-name');
                 const storeTaglineEl = document.getElementById('store-tagline');
@@ -728,6 +804,32 @@
                     shopPictureContainer.style.display = 'block';
                 } else if (shopPictureContainer) {
                     shopPictureContainer.style.display = 'none';
+                }
+                
+                // Handle social icons if available
+                const socialIconsContainer = document.getElementById('social-icons-container');
+                const socialIcons = document.getElementById('social-icons');
+                const socialIconsTitle = document.getElementById('social-icons-title');
+                
+                if (socialIconsContainer && socialIcons && storeInfo.socialIcons && storeInfo.socialIcons.length > 0) {
+                    socialIconsTitle.textContent = storeInfo.socialIconsTitle || 'Connect with us';
+                    
+                    let socialIconsHTML = '';
+                    storeInfo.socialIcons.forEach(icon => {
+                        if (icon.url && icon.name) {
+                            const iconClass = getSocialIconClass(icon.name);
+                            socialIconsHTML += `
+                                <a href="${icon.url}" target="_blank" class="social-icon" style="background-color: ${icon.color || '#2563eb'};">
+                                    <i class="${iconClass}"></i>
+                                </a>
+                            `;
+                        }
+                    });
+                    
+                    socialIcons.innerHTML = socialIconsHTML;
+                    socialIconsContainer.style.display = 'block';
+                } else if (socialIconsContainer) {
+                    socialIconsContainer.style.display = 'none';
                 }
                 
                 if (storeInfoEl) {
