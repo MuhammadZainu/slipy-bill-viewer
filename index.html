@@ -485,7 +485,21 @@
                     console.log('Raw encoded data length:', encodedData.length);
                     console.log('Raw encoded data preview:', encodedData.substring(0, 100) + '...');
                     
-                    const billData = JSON.parse(decodeURIComponent(encodedData));
+                    // Try Base64 decode first, then fallback to URI decode
+                    let billData;
+                    try {
+                        const decodedData = atob(encodedData); // Base64 decode
+                        console.log('Base64 decoded data length:', decodedData.length);
+                        billData = JSON.parse(decodedData);
+                        console.log('✅ Successfully parsed with Base64 decode');
+                    } catch (base64Error) {
+                        console.log('Base64 decode failed, trying URI decode:', base64Error.message);
+                        const decodedData = decodeURIComponent(encodedData); // URI decode
+                        console.log('URI decoded data length:', decodedData.length);
+                        billData = JSON.parse(decodedData);
+                        console.log('✅ Successfully parsed with URI decode');
+                    }
+                    
                     console.log('✅ Successfully parsed bill data:', billData);
                     console.log('Bill data items count:', billData.items ? billData.items.length : 'No items');
                     console.log('Bill data total:', billData.total);
