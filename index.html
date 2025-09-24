@@ -357,14 +357,58 @@
             color: #6c757d;
         }
         
-        .error {
-            background: #f8d7da;
-            border: 1px solid #f5c6cb;
-            color: #721c24;
-            padding: 16px;
+        .error-message-card {
+            background: #fff5f5;
+            border: 1px solid #fecaca;
             border-radius: 8px;
+            padding: 20px;
             margin: 20px;
             text-align: center;
+        }
+        
+        .error-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+        }
+        
+        .error-message-card h3 {
+            color: #dc2626;
+            margin-bottom: 12px;
+        }
+        
+        .error-message-card p {
+            color: #7f1d1d;
+            margin-bottom: 16px;
+        }
+        
+        .error-debug {
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+            border-radius: 4px;
+            padding: 12px;
+            margin: 16px 0;
+            text-align: left;
+            font-size: 12px;
+        }
+        
+        .error-debug p {
+            margin: 4px 0;
+            color: #991b1b;
+        }
+        
+        .retry-btn {
+            background: #dc2626;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            margin-top: 16px;
+        }
+        
+        .retry-btn:hover {
+            background: #b91c1c;
         }
         
         .error h3 {
@@ -429,29 +473,52 @@
             const encodedData = urlParams.get('data');
             const billContentDiv = document.getElementById('bill-content');
 
-            console.log('URL Parameters:', { billId, encodedData: encodedData ? 'Present' : 'Missing' });
+            console.log('URL Parameters:', { 
+                billId, 
+                encodedData: encodedData ? 'Present' : 'Missing',
+                test: urlParams.get('test'),
+                debug: urlParams.get('debug')
+            });
 
             if (billId && encodedData) {
                 try {
+                    console.log('Raw encoded data length:', encodedData.length);
+                    console.log('Raw encoded data preview:', encodedData.substring(0, 100) + '...');
+                    
                     const billData = JSON.parse(decodeURIComponent(encodedData));
-                    console.log('Parsed Bill Data:', billData);
+                    console.log('✅ Successfully parsed bill data:', billData);
+                    console.log('Bill data items count:', billData.items ? billData.items.length : 'No items');
+                    console.log('Bill data total:', billData.total);
+                    
                     renderBill(billData);
                 } catch (e) {
-                    console.error('Error parsing bill data:', e);
-                    showError('Error parsing bill data. Please try scanning the QR code again.');
+                    console.error('❌ Error parsing bill data:', e);
+                    console.error('Error details:', e.message);
+                    console.error('Stack trace:', e.stack);
+                    showError(`Error parsing bill data: ${e.message}. Please try scanning the QR code again.`);
                 }
             } else if (billId && urlParams.get('test') === 'true') {
                 // Handle test mode
+                console.log('🧪 Running in test mode');
                 renderTestBill(billId);
             } else {
+                console.log('❌ No valid data found');
                 showError('No bill data found in URL. Please scan a valid QR code.');
             }
 
             function showError(message) {
                 billContentDiv.innerHTML = `
-                    <div class="error">
+                    <div class="error-message-card">
+                        <div class="error-icon">⚠️</div>
                         <h3>Error Loading Bill</h3>
                         <p>${message}</p>
+                        <div class="error-debug">
+                            <p><strong>Debug Info:</strong></p>
+                            <p>URL: ${window.location.href}</p>
+                            <p>Bill ID: ${urlParams.get('billId') || 'Not provided'}</p>
+                            <p>Data: ${urlParams.get('data') ? 'Present' : 'Missing'}</p>
+                            <p>Test Mode: ${urlParams.get('test') === 'true' ? 'Yes' : 'No'}</p>
+                        </div>
                         <button class="retry-btn" onclick="location.reload()">Retry</button>
                     </div>
                 `;
