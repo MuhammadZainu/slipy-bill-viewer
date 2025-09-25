@@ -36,8 +36,8 @@
         }
         
         .store-logo {
-            width: 80px;
-            height: 80px;
+            width: 100px;
+            height: 100px;
             background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
             border-radius: 50%;
             margin: 0 auto 15px;
@@ -46,6 +46,7 @@
             justify-content: center;
             position: relative;
             border: 3px solid #22c55e;
+            overflow: hidden;
         }
         
         .store-logo::before {
@@ -62,10 +63,11 @@
             font-weight: bold;
         }
         
-        .store-logo::after {
-            content: "🍎🥑🍓🍊";
-            font-size: 24px;
-            color: white;
+        .store-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
         }
         
         .store-name {
@@ -547,7 +549,9 @@
 <body>
     <div class="container">
         <div class="header" id="store-header">
-            <div class="store-logo" id="store-logo" style="display: none;"></div>
+            <div class="store-logo" id="store-logo">
+                <img id="store-logo-img" src="" alt="Store Logo" style="display: none;">
+            </div>
             <div class="store-name" id="store-name">Loading...</div>
             <div class="store-tagline" id="store-tagline">Loading...</div>
             <div class="store-info" id="store-info">
@@ -873,11 +877,20 @@
                 }
                 
                 // Handle store logo if available
-                if (storeLogoEl && storeInfo.storeImage) {
-                    storeLogoEl.innerHTML = `<img src="${storeInfo.storeImage}" alt="Store Logo" style="max-width: 80px; max-height: 80px; border-radius: 8px;">`;
-                    storeLogoEl.style.display = 'block';
-                } else if (storeLogoEl) {
-                    storeLogoEl.style.display = 'none';
+                const storeLogoImg = document.getElementById('store-logo-img');
+                if (storeLogoEl && storeLogoImg) {
+                    if (storeInfo.storeImage) {
+                        storeLogoImg.src = storeInfo.storeImage;
+                        storeLogoImg.style.display = 'block';
+                        storeLogoEl.style.display = 'block';
+                    } else if (storeInfo.shopPic) {
+                        storeLogoImg.src = storeInfo.shopPic;
+                        storeLogoImg.style.display = 'block';
+                        storeLogoEl.style.display = 'block';
+                    } else {
+                        storeLogoEl.style.display = 'block'; // Show default logo
+                        storeLogoImg.style.display = 'none';
+                    }
                 }
                 
                 // Handle store image at top if available
