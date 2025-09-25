@@ -759,7 +759,7 @@
                     
                     <div class="connect-section">
                         <div class="connect-header">
-                            <div class="store-image-container" id="connect-store-image" style="display: none;">
+                            <div class="store-image-container" id="connect-store-image" style="display: block;">
                                 <img id="connect-store-img" src="" alt="Store Image" class="connect-store-image">
                             </div>
                             <div class="connect-title">Connect with us</div>
@@ -858,15 +858,27 @@
                 const connectStoreImageContainer = document.getElementById('connect-store-image');
                 const connectStoreImage = document.getElementById('connect-store-img');
                 
+                console.log('Store info for connect section:', {
+                    storeImage: storeInfo.storeImage,
+                    shopPic: storeInfo.shopPic,
+                    hasContainer: !!connectStoreImageContainer,
+                    hasImage: !!connectStoreImage
+                });
+                
                 if (connectStoreImageContainer && connectStoreImage) {
                     if (storeInfo.storeImage) {
                         connectStoreImage.src = storeInfo.storeImage;
                         connectStoreImageContainer.style.display = 'block';
+                        console.log('Showing store image in connect section');
                     } else if (storeInfo.shopPic) {
                         connectStoreImage.src = storeInfo.shopPic;
                         connectStoreImageContainer.style.display = 'block';
+                        console.log('Showing shop pic in connect section');
                     } else {
-                        connectStoreImageContainer.style.display = 'none';
+                        // Show a default image or placeholder
+                        connectStoreImageContainer.style.display = 'block';
+                        connectStoreImage.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNzAiIGhlaWdodD0iNzAiIHZpZXdCb3g9IjAgMCA3MCA3MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMzUiIGN5PSIzNSIgcj0iMzUiIGZpbGw9IiMyMmM1NWUiLz4KPHN2ZyB4PSIyMCIgeT0iMjAiIHdpZHRoPSIzMCIgaGVpZ2h0PSIzMCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIj4KPHBhdGggZD0iTTEyIDJMMTMuMDkgOC4yNkwyMCA5TDEzLjA5IDE1Ljc0TDEyIDIyTDEwLjkxIDE1Ljc0TDQgOUwxMC45MSA4LjI2TDEyIDJaIiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4KPC9zdmc+';
+                        console.log('Showing default store icon in connect section');
                     }
                 }
                 
