@@ -432,22 +432,6 @@
             background: #c82333;
         }
         
-        /* Store Image Styles (at top) */
-        .store-image-container {
-            text-align: center;
-            margin: 20px 0;
-            padding: 0 20px;
-        }
-        
-        .store-image {
-            max-width: 100%;
-            max-height: 200px;
-            width: 100%;
-            height: 200px;
-            border-radius: 12px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            object-fit: cover;
-        }
         
         /* Shop Picture Styles */
         .shop-picture-container {
@@ -534,11 +518,12 @@
             font-weight: 600;
             color: #374151;
             margin-top: 10px;
+            text-align: center;
         }
         
         .connect-store-image {
-            width: 80px;
-            height: 80px;
+            width: 70px;
+            height: 70px;
             border-radius: 50%;
             object-fit: cover;
             border: 3px solid #22c55e;
@@ -564,10 +549,6 @@
             <img id="shop-picture" src="" alt="Shop Picture" class="shop-picture">
         </div>
         
-        <!-- Store Image Section (at top) -->
-        <div class="store-image-container" id="store-image-container" style="display: none;">
-            <img id="store-image" src="" alt="Store Image" class="store-image">
-        </div>
         
         
         <div class="bill-content" id="bill-content">
@@ -893,16 +874,6 @@
                     }
                 }
                 
-                // Handle store image at top if available
-                const storeImageContainer = document.getElementById('store-image-container');
-                const storeImage = document.getElementById('store-image');
-                
-                if (storeImageContainer && storeImage && storeInfo.storeImage) {
-                    storeImage.src = storeInfo.storeImage;
-                    storeImageContainer.style.display = 'block';
-                } else if (storeImageContainer) {
-                    storeImageContainer.style.display = 'none';
-                }
                 
                 // Handle shop picture if available
                 if (shopPictureContainer && shopPicture && storeInfo.shopPic) {
@@ -912,7 +883,7 @@
                     shopPictureContainer.style.display = 'none';
                 }
                 
-                // Handle store image in connect section
+                // Handle store image in connect section (rounded)
                 const connectStoreImageContainer = document.getElementById('connect-store-image');
                 const connectStoreImage = document.getElementById('connect-store-img');
                 
@@ -927,6 +898,7 @@
                         connectStoreImageContainer.style.display = 'none';
                     }
                 }
+                
                 
                 
                 if (storeInfoEl) {
