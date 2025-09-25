@@ -433,22 +433,6 @@
         }
         
         
-        /* Shop Picture Styles */
-        .shop-picture-container {
-            text-align: center;
-            margin: 15px 0;
-            padding: 0 20px;
-        }
-        
-        .shop-picture {
-            max-width: 200px;
-            max-height: 150px;
-            width: 200px;
-            height: 150px;
-            border-radius: 12px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            object-fit: cover;
-        }
         
         /* Social Icons Styles */
         .social-icons-container {
@@ -544,10 +528,6 @@
             </div>
         </div>
         
-        <!-- Shop Picture Section -->
-        <div class="shop-picture-container" id="shop-picture-container" style="display: none;">
-            <img id="shop-picture" src="" alt="Shop Picture" class="shop-picture">
-        </div>
         
         
         
@@ -846,8 +826,6 @@
                 const storeTaglineEl = document.getElementById('store-tagline');
                 const storeInfoEl = document.getElementById('store-info');
                 const storeLogoEl = document.getElementById('store-logo');
-                const shopPictureContainer = document.getElementById('shop-picture-container');
-                const shopPicture = document.getElementById('shop-picture');
 
                 if (storeNameEl) {
                     storeNameEl.textContent = storeInfo.storeName || 'Your Store';
@@ -875,13 +853,6 @@
                 }
                 
                 
-                // Handle shop picture if available
-                if (shopPictureContainer && shopPicture && storeInfo.shopPic) {
-                    shopPicture.src = storeInfo.shopPic;
-                    shopPictureContainer.style.display = 'block';
-                } else if (shopPictureContainer) {
-                    shopPictureContainer.style.display = 'none';
-                }
                 
                 // Handle store image in connect section (rounded)
                 const connectStoreImageContainer = document.getElementById('connect-store-image');
